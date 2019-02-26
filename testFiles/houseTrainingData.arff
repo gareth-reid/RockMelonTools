@@ -1,0 +1,39 @@
+% 1. Title: Database for calculating house prices
+% 
+% 2. Sources:
+%      TBA
+%          International Journal of Man-Machine Studies, 1987, 27, 349-370
+%      (b) Author: Gareth Reid
+%      (c) Date: 24/02/2019
+% 
+% 3. Number of Instances: 24
+% 
+% 4. Number of Attributes: 4 (all nominal)
+% 
+% 5. Attribute Information:
+%     
+%     1. House size
+%     2. distance from CBD
+%     3. num of bedrooms
+%     4. num of bathrooms
+% 
+%
+@relation house-prices
+
+@attribute size numeric
+@attribute distance numeric
+@attribute beds numeric
+@attribute bath numeric
+@attribute price numeric
+
+@data
+%
+% 24 instances
+%
+34,6,3,2,1000000
+42,2,4,2,750000
+38,15,3,2,900000
+21,10,1,1,600000
+42,4,5,4,1500000
+42,50,5,3,950000
+20,10,2,1,600000

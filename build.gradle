@@ -1,0 +1,66 @@
+apply plugin: 'application'
+apply plugin: 'groovy'
+
+version = '2.1'
+
+repositories {
+    mavenCentral();
+}
+
+dependencies
+        {
+            compile files (fileTree(dir: 'lib', include: ['*.jar']),
+                    fileTree(dir: 'lib/DocxDep', include: ['*.jar']))
+            compile 'org.codehaus.groovy:groovy-all:2.3.7'
+//            compile ('org.codehaus.groovy.modules.http-builder:http-builder:0.5.1')
+//                    {
+//                        exclude group: 'org.codehaus.groovy', modules: 'groovy'
+//                    }
+            //testCompile 'junit:junit:[4,)'
+        }
+
+targetCompatibility = 1.6
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
+
+task buildRockMelonLibraryJar(type: Jar) {
+    from files(sourceSets.main.output)
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+        configurations.runtime.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    with jar
+
+    sourceSets.main {
+        groovy.srcDirs = ['src']
+        resources.srcDirs = ['src']
+    }
+    sourceSets.test {
+        groovy.srcDirs = ['src/tests']
+    }
+
+    manifest {
+        attributes 'Implementation-Title': 'Rockmelon Library',
+                'Implementation-Version': version,
+                'Main-Class': 'rockmelon.library.mainDriver'
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
