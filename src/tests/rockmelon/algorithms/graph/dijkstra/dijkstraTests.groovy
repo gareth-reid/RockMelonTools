@@ -6,9 +6,6 @@ import rockmelon.library.algorithms.graph.Dijkstra.DijkstraAlgorithm
 import rockmelon.library.algorithms.graph.Edge
 import rockmelon.library.algorithms.graph.Graph
 import rockmelon.library.algorithms.graph.Vertex
-import rockmelon.library.algorithms.sort.InsertionSort
-import rockmelon.library.algorithms.sort.MergeSort
-import rockmelon.library.algorithms.sort.TestData
 
 /**
  * Created by reid gareth on 27/11/2017.

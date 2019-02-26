@@ -1,4 +1,6 @@
-package rockmelon.library.algorithms.sort
+package tests.rockmelon.algorithms.sort
+
+import rockmelon.library.algorithms.sort.Sortable
 
 /**
  * Created by reid gareth on 2/20/18.

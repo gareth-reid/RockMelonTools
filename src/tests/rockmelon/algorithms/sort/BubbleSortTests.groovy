@@ -3,8 +3,6 @@ package tests.rockmelon.algorithms.sort
 import org.junit.Assert
 import org.junit.Test
 import rockmelon.library.algorithms.sort.BubbleSort
-import rockmelon.library.algorithms.sort.InsertionSort
-import rockmelon.library.algorithms.sort.TestData
 
 /**
  * Created by reid gareth on 2/20/18.
