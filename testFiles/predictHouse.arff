@@ -20,7 +20,7 @@
 %
 @relation house-prices
 
-@attribute size numeric
+@attribute disposals numeric
 @attribute distance numeric
 @attribute beds numeric
 @attribute bath numeric
@@ -30,4 +30,5 @@
 %
 % 24 instances
 %
-32,22,2,1,?
+24,5,2,1,?
+38,4,5,4,?

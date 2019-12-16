@@ -1,5 +1,9 @@
 package rockmelon.library.algorithms.ai.machinelearning
 
+import weka.classifiers.bayes.NaiveBayes
+import weka.datagenerators.Test
+import weka.gui.beans.DataSink
+
 import java.io.IOException;
 
 import weka.classifiers.Classifier;
@@ -27,31 +31,31 @@ public class LinearRegression {
      * @throws Exception
      */
     public void execute() throws Exception {
-
+        int classIndex = 4
         Instances trainingDataSet = getDataSet(TRAINING_DATA_SET_FILENAME);
         Instances testingDataSet = getDataSet(TESTING_DATA_SET_FILENAME);
+
         /** Classifier here is Linear Regression */
-        Classifier classifier = new weka.classifiers.functions.LinearRegression();
-        /** */
+        trainingDataSet.setClassIndex(classIndex);
+
+        /**Regression classifier */
+        Classifier classifier = new weka.classifiers.functions.LeastMedSq();
         classifier.buildClassifier(trainingDataSet);
-        /**
-         * train the alogorithm with the training data and evaluate the
-         * algorithm with testing data
-         */
-        Evaluation eval = new Evaluation(trainingDataSet);
-        eval.evaluateModel(classifier, testingDataSet);
-        /** Print the algorithm summary */
-        System.out.println("** Linear Regression Evaluation with Datasets **");
-        System.out.println(eval.toSummaryString());
-        System.out.print(" the expression for the input data as per alogorithm is ");
-        System.out.println(classifier);
+        /**load test data*/
+        //Evaluation eval = new Evaluation(trainingDataSet);
+        //eval.evaluateModel(classifier, testingDataSet);
 
-        Instances predicationDataSet = getDataSet(PREDICTION_DATA_SET_FILENAME);
-        def values = eval.evaluateModel(classifier, predicationDataSet)
+        Instances predictionDataSet = getDataSet(PREDICTION_DATA_SET_FILENAME);
+        predictionDataSet.setClassIndex(classIndex);
 
-        /** Prediction Output */
-        System.out.println("Prediction: "+ values[0]);
-    }
+        for (int i = 0; i < predictionDataSet.numInstances(); i++) {
+            Instance newInst = predictionDataSet.instance(i);
+            double prediction = classifier.classifyInstance(newInst);
+           // System.out.println(classifier);
+
+            System.out.println("Prediction: " + prediction);
+        }
+ }
 
     /**
      * This method is to load the data set.
